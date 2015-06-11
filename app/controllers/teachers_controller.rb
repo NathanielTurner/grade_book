@@ -69,6 +69,14 @@ class TeachersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def teacher_params
-      params.require(:teacher).permit(:name)
+      params.require(:teacher).permit(:name, :email, :password, :password_confirmation)
+    end
+
+    def logged_in?
+      if Parent.find_by_id(session[:parent_id])
+        return true
+      else
+        redirect_to login_login_path, notice: 'Restricted. Login first.'
+      end
     end
 end
