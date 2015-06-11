@@ -5,12 +5,12 @@ class DashBoardController < ApplicationController
 
 
   def show
-    if session[:teacher_id] && session[:type] == "teacher"
-      redirect_to teacher_path
-    elsif session[:student_id] && session[:type] == "student"
-      redirect_to student_path
-    elsif session[:parent_id] && session[:type] == "parent"
-      redirect_to parent_path
+    if session[:teacher_id]
+      redirect_to controller: 'dash_board', action: 'teacher'
+    elsif session[:student_id]
+      redirect_to controller: 'dash_board', action: 'student'
+    elsif session[:parent_id]
+      redirect_to controller: 'dash_board', action: 'parent'
     else
       redirect_to login_path, notice: "Restricted, log in first."
     end
