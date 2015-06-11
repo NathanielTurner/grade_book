@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<h2>Login</h2>
+
+<%= form_tag do %>
+<div>
+  <%= label_tag 'type' %>
+  <%= radio_button_tag 'type', 'student' %> student
+  <%= radio_button_tag 'type', 'parent' %> parent
+  <%= radio_button_tag 'type', 'teacher',true %> teacher
+</div>
+  <%= label_tag :email %>
+  <%= text_field_tag :email %>
+  <%= label_tag :password %>
+  <%= password_field_tag :password %>
+  <%= submit_tag "Login" %>
+
+
+<% end %>
