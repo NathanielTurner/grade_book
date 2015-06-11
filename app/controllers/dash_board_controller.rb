@@ -20,5 +20,8 @@ class DashBoardController < ApplicationController
   end
 
   def student
+    @student = Student.find_by_id(session[:student_id])
+    @grades = @student.grades.all
   end
+
 end

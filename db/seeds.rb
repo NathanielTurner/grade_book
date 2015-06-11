@@ -1,6 +1,6 @@
-(1..20).each do
+(1..200).each do
   Grade.create(assignment: Faker::Lorem.sentence(word_count=4), grade: rand(45..100),
-               student_id: rand(1..4))
+               student_id: rand(1..20))
 end
 
 (1..4).each do
@@ -12,4 +12,4 @@ end
 Teacher.create(name: "Nate", email: "nateturner1990@gmail.com", password: "firecracker",
                )
 Parent.create(name: "Bobby", email: "bobby@example.com", password: "firecracker",
-              student_id: 2)
+              student_id: 1)
