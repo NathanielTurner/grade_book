@@ -31,17 +31,9 @@ class LoginController < ApplicationController
   end
 
   def logout
-    if session[:teacher_id]
-      session[:teacher_id] = nil
-      redirect_to login_path, :notice => "Teacher successfully logged out."
-
-    elsif session[:student_id]
-      session[:student_id] = nil
-      redirect_to login_path, :notice => "Student successfully logged out."
-
-    elsif session[:parent_id]
-      session[:parent_id] = nil
-      redirect_to login_path, :notice => "Parent successfully logged out."
-    end
+    session[:student_id] = nil
+    session[:teacher_id] = nil
+    session[:parent_id] = nil
+    redirect_to login_path, :notice => "Successfully logged out."
   end
 end

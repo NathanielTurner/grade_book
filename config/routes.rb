@@ -9,4 +9,5 @@ Rails.application.routes.draw do
   get '/parent' => 'dash_board#parent'
   get '/student' => 'dash_board#student'
   get '/teacher' => 'dash_board#teacher'
+  get '/lists' => 'dash_board#index'
 end
