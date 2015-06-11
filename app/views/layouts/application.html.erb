@@ -1,22 +1,33 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <title><%= content_for?(:title) ? yield(:title) : "Grade Book" %></title>
-    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Grade Book" %>">
-    <%= stylesheet_link_tag 'application', media: 'all' %>
-    <%# Modernizr is required for Zurb Foundation %>
-    <%= javascript_include_tag 'vendor/modernizr' %>
-    <%= javascript_include_tag 'application' %>
+
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "vendor/modernizr" %>
+    <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
   </head>
-  <body>
+  <% if session[:teacher_id] %>
     <header>
-      <%= render 'layouts/navigation' %>
+      <h4>Logged in as the teacher <%= Teacher.find_by_id(session[:teacher_id]).name %></h4>
     </header>
-    <main role="main">
-       <%= render 'layouts/messages' %>
-       <%= yield %>
-    </main>
+  <% elsif session[:parent_id] %>
+    <header>
+      <h4>Logged in as the parent <%= Parent.find_by_id(session[:parent_id]).name %></h4>
+    </header>
+  <% elsif session[:student_id] %>
+    <header>
+      <h4>Logged in as the student <%= Student.find_by_id(session[:student_id]).name %></h4>
+    </header>
+  <% end %>
+
+  <body>
+
+    <%= yield %>
+
   </body>
 </html>
