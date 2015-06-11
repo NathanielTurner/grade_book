@@ -6,5 +6,7 @@ Rails.application.routes.draw do
   get '/login' => 'login#login'
   post '/login' => 'login#login'
   get '/logout' => 'login#logout'
-
+  get '/parent' => 'dash_board#parent'
+  get '/student' => 'dash_board#student'
+  get '/teacher' => 'dash_board#teacher'
 end

@@ -34,12 +34,12 @@ class LoginController < ApplicationController
     if session[:teacher_id]
       session[:teacher_id] = nil
       redirect_to login_path, :notice => "Teacher successfully logged out."
-    end
-    if session[:student_id]
+
+    elsif session[:student_id]
       session[:student_id] = nil
       redirect_to login_path, :notice => "Student successfully logged out."
-    end
-    if session[:parent_id]
+
+    elsif session[:parent_id]
       session[:parent_id] = nil
       redirect_to login_path, :notice => "Parent successfully logged out."
     end
